@@ -6,6 +6,23 @@ Our workforce has labeled over four hundred images of people, detecting their fa
 
 Both the images, the labels and the model are free for you to use in your own projects.
 
+## How to train
+
+First install the requirements:
+```
+pip install -r requirements.txt
+```
+
+Get your Layer API from [app.layer.ai](https://app.layer.ai) > Settings > Developer. Set your environment variable:
+```
+export LAYER_API_KEY=[YOUR_API_KEY]
+```
+
+Train your model:
+```
+python main.py
+```
+
 ## Dataset
 
 Each image has been independently labeled by two of our labelers, and then manually reviewed by one of our expert reviewers. Our labelers combined annotated a total of 7212 faces, 4819 of which were looking straight, with the rest evenly split between looking to the side and away.
