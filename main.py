@@ -10,7 +10,7 @@ import cloudpickle
 import dataset
 from dataset import AngoDataset
 from utils import collate_fn
-
+import os
 
 def get_instance_segmentation_model(num_classes):
   import torchvision
@@ -35,7 +35,7 @@ def get_datasets():
   import layer
   import torch
 
-  df = layer.get_dataset('mecevitpersonal/sandbox-mecevit/datasets/mask_detection:4.1').to_pandas()
+  df = layer.get_dataset('layer/covid/datasets/mask_images:1.1').to_pandas()
   dataset = AngoDataset(df, get_transform(True))
   dataset_test = AngoDataset(df, get_transform(False))
 
@@ -116,7 +116,7 @@ def train():
 
   return model
 
-
+# Register all modules in the project
 cloudpickle.register_pickle_by_value(utils)
 cloudpickle.register_pickle_by_value(dataset)
 cloudpickle.register_pickle_by_value(coco_eval)
@@ -124,12 +124,9 @@ cloudpickle.register_pickle_by_value(coco_utils)
 cloudpickle.register_pickle_by_value(transforms)
 cloudpickle.register_pickle_by_value(engine)
 
-# app/layer
-token = "6gouYd0Nu41MhU_GOpn49FSsKstH0VZJSgSEDYs5EdDRA"
-# app/mecevit
-# token = "qBmgNajZadP8uPvMHemFYrdZWSIuDSg5zyFZemkIGD3jz"
+token = os.getenv("LAYER_API_KEY")
+# print(token)
 layer.login_with_api_key(token)
 layer.init("covid")
 
 # layer.run([train])
-# train()
