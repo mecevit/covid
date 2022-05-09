@@ -8,8 +8,15 @@ Both the images, the labels and the model are free for you to use in your own pr
 
 ## How to train
 
+Clone the repo:
+
+```
+git clone https://github.com/mecevit/covid
+```
+
 First install the requirements:
 ```
+cd covid
 pip install -r requirements.txt
 ```
 
