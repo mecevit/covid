@@ -125,8 +125,7 @@ cloudpickle.register_pickle_by_value(transforms)
 cloudpickle.register_pickle_by_value(engine)
 
 token = os.getenv("LAYER_API_KEY")
-# print(token)
 layer.login_with_api_key(token)
 layer.init("covid")
 
-# layer.run([train])
+layer.run([train])
